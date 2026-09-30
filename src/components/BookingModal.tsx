@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Calendar as CalendarIcon, Users, KeyRound, Sparkles, Building2, Shield, Mail, ChevronLeft, ChevronRight, Clock, Check } from 'lucide-react';
+import { X, Calendar as CalendarIcon, Users, KeyRound, Sparkles, Building2, Shield, Mail, ChevronLeft, ChevronRight, Clock, Check, ChevronDown } from 'lucide-react';
 import { NYC_VENUES } from '../data/venues';
 import confetti from 'canvas-confetti';
 
@@ -23,9 +23,9 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   selectedVenueId,
   onBookingConfirmed,
 }) => {
-  const [selectedVenue, setSelectedVenue] = useState<string>(
-    selectedVenueId || NYC_VENUES[0].name
-  );
+  // Venue Input (Editable with Suggestions & Custom Input)
+  const [venueInput, setVenueInput] = useState<string>('Aman New York');
+  const [showVenueSuggestions, setShowVenueSuggestions] = useState(false);
   const [tier, setTier] = useState<'Sovereign' | 'Black Tier' | 'Reserve'>('Sovereign');
   
   // Real Interactive Calendar State
@@ -40,14 +40,25 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const [contact, setContact] = useState('vane.private@sofi.ny');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const nativeInputRef = useRef<HTMLInputElement>(null);
+  const venueWrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (selectedVenueId) {
-      const match = NYC_VENUES.find((v) => v.id === selectedVenueId);
-      if (match) setSelectedVenue(match.name);
+      const match = NYC_VENUES.find((v) => v.id === selectedVenueId || v.name === selectedVenueId);
+      if (match) setVenueInput(match.name);
     }
   }, [selectedVenueId]);
+
+  // Click outside listener for suggestions dropdown
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (venueWrapperRef.current && !venueWrapperRef.current.contains(e.target as Node)) {
+        setShowVenueSuggestions(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   if (!isOpen) return null;
 
@@ -95,6 +106,11 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     setShowCalendar(false);
   };
 
+  const handleSelectSuggestedVenue = (venueName: string) => {
+    setVenueInput(venueName);
+    setShowVenueSuggestions(false);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -114,7 +130,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       const serial = `SOFI-NYC-${Math.floor(10000 + Math.random() * 90000)}-${tier.charAt(0)}`;
       onBookingConfirmed({
         passholderName: name || 'Sovereign Guest',
-        venueName: selectedVenue,
+        venueName: venueInput.trim() || 'Sovereign Placement',
         tier: tier,
         date: dateFormatted,
         guests: guests,
@@ -160,31 +176,75 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4 pt-4">
-            {/* Preferred Venue */}
-            <div>
-              <label className="block text-[10px] uppercase tracking-[0.2em] text-gold-300 font-medium mb-1.5">
-                Preferred NYC Venue / Enclave
-              </label>
+            {/* Preferred Venue (Editable input with Suggestions Dropdown & Custom Typing) */}
+            <div ref={venueWrapperRef} className="relative">
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="text-[10px] uppercase tracking-[0.2em] text-gold-300 font-medium">
+                  NYC Venue / Destination
+                </label>
+                <span className="text-[9px] text-white/40 tracking-wider">
+                  Select option or type custom venue
+                </span>
+              </div>
+
               <div className="relative">
                 <Building2 className="w-4 h-4 text-gold-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-                <select
-                  value={selectedVenue}
-                  onChange={(e) => setSelectedVenue(e.target.value)}
-                  className="w-full pl-10 pr-8 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 focus:border-gold-400/60 text-white text-xs tracking-wider outline-none appearance-none cursor-pointer transition-colors"
+                <input
+                  type="text"
+                  required
+                  list="venues-list"
+                  value={venueInput}
+                  onChange={(e) => setVenueInput(e.target.value)}
+                  onFocus={() => setShowVenueSuggestions(true)}
+                  placeholder="e.g. Aman New York, Casa Cipriani, or type custom venue..."
+                  className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 focus:border-gold-400/60 text-white text-xs tracking-wider outline-none transition-colors"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowVenueSuggestions(!showVenueSuggestions)}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-white/40 hover:text-white transition-colors"
+                  aria-label="Toggle Venue Suggestions"
                 >
-                  <option value="Any Sovereign Enclave" className="bg-obsidian-900 text-white">
-                    ✦ Any Sovereign Enclave (Concierge Placement)
-                  </option>
-                  {NYC_VENUES.map((v) => (
-                    <option key={v.id} value={v.name} className="bg-obsidian-900 text-white">
-                      {v.name} ({v.neighborhood} • {v.accessTier})
-                    </option>
-                  ))}
-                </select>
-                <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-white/40 text-xs">
-                  ▼
-                </div>
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </button>
               </div>
+
+              {/* Native Datalist Fallback */}
+              <datalist id="venues-list">
+                {NYC_VENUES.map((v) => (
+                  <option key={v.id} value={v.name}>
+                    {v.neighborhood} • {v.accessTier}
+                  </option>
+                ))}
+              </datalist>
+
+              {/* Floating Suggestions Dropdown */}
+              {showVenueSuggestions && (
+                <div className="absolute top-full left-0 right-0 mt-1.5 z-40 p-2 rounded-xl bg-[#0c0d14]/98 border border-white/15 shadow-[0_15px_40px_rgba(0,0,0,0.9)] max-h-48 overflow-y-auto backdrop-blur-2xl">
+                  <div className="text-[9px] uppercase tracking-[0.2em] text-gold-300/70 px-2 py-1 font-mono">
+                    Curated Options (Click to fill)
+                  </div>
+                  <div className="space-y-1 mt-1">
+                    {NYC_VENUES.map((v) => (
+                      <button
+                        type="button"
+                        key={v.id}
+                        onClick={() => handleSelectSuggestedVenue(v.name)}
+                        className={`w-full text-left px-3 py-1.5 rounded-lg text-xs transition-colors flex items-center justify-between ${
+                          venueInput === v.name
+                            ? 'bg-gold-400/15 text-gold-300 font-semibold'
+                            : 'text-white/80 hover:bg-white/10 hover:text-white'
+                        }`}
+                      >
+                        <span className="truncate">{v.name}</span>
+                        <span className="text-[10px] text-white/40 font-mono tracking-wider shrink-0 pl-2">
+                          {v.neighborhood}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Access Tier Selector */}
