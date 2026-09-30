@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Disc3, Maximize2, Music } from 'lucide-react';
+import { Volume2, VolumeX, Maximize2 } from 'lucide-react';
 import { soundEngine } from '../services/audioEngine';
 import { AudioVisualizer } from './AudioVisualizer';
+import { SpotifyLogo } from './SpotifyLogo';
 
 interface SoundscapeBarProps {
   onOpenPlayer: () => void;
@@ -42,15 +43,15 @@ export const SoundscapeBar: React.FC<SoundscapeBarProps> = ({ onOpenPlayer }) =>
         onClick={onOpenPlayer}
         className="pointer-events-auto group cursor-pointer flex items-center gap-3.5 px-3.5 py-2.5 rounded-full bg-obsidian-950/70 hover:bg-obsidian-950/90 backdrop-blur-2xl border border-white/10 hover:border-gold-400/40 shadow-[0_15px_40px_rgba(0,0,0,0.8)] transition-all duration-300 hover:scale-[1.02]"
       >
-        {/* Animated Disc Indicator */}
+        {/* Animated Spotify / Audio Indicator */}
         <div className="relative">
-          <div className={`w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 ${
-            isPlaying ? 'animate-[spin_4s_linear_infinite]' : ''
+          <div className={`w-8 h-8 rounded-full bg-[#1DB954]/15 border border-[#1DB954]/30 flex items-center justify-center ${
+            isPlaying ? 'scale-105' : ''
           }`}>
-            <Disc3 className="w-4 h-4" />
+            <SpotifyLogo className="w-4 h-4" color="#1DB954" />
           </div>
           {isPlaying && (
-            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#1DB954] animate-ping" />
           )}
         </div>
 

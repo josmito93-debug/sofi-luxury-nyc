@@ -96,10 +96,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSpotify, onOpenBooking, on
           <button
             onClick={onOpenSpotify}
             aria-label="Spotify Luxury Player"
-            className="p-2 sm:px-3 sm:py-1.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-500/40 text-white/80 hover:text-emerald-300 transition-all duration-300 flex items-center gap-1.5 group"
+            className="p-2 sm:px-3 sm:py-1.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-[#1DB954]/50 text-white/80 hover:text-[#1DB954] transition-all duration-300 flex items-center gap-1.5 group"
             title="Open Spotify Luxury Player"
           >
-            <Disc3 className="w-3.5 h-3.5 text-emerald-400 group-hover:rotate-180 transition-transform duration-700" />
+            <SpotifyLogo className="w-3.5 h-3.5 group-hover:scale-110 transition-transform duration-300" color="#1DB954" />
             <span className="text-[10px] tracking-[0.18em] uppercase hidden lg:inline-block text-white/70">
               Player
             </span>
