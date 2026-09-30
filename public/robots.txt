@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sofi-gold.vercel.app/sitemap.xml
+Host: https://sofi-gold.vercel.app

@@ -1,48 +1,142 @@
 <!doctype html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="dark scroll-smooth" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    
+    <!-- Primary Page Metadata -->
     <title>SOFI NYC — Private Members Clubs & Luxury Hotels in New York</title>
+    <meta name="title" content="SOFI NYC — Private Members Clubs & Luxury Hotels in New York" />
     <meta name="description" content="Access New York's most exclusive luxury hotels, private members clubs, and after-hours enclaves. Confidential VIP concierge reservations for Aman New York, Casa Cipriani, Zero Bond, and The Carlyle." />
-    <meta name="keywords" content="NYC luxury hotels, private members clubs NYC, exclusive clubs New York, Aman New York, Casa Cipriani, Zero Bond, The Carlyle, VIP concierge New York, sovereign access NYC" />
-    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="NYC luxury hotels, private members clubs NYC, exclusive clubs New York, Aman New York, Casa Cipriani, Zero Bond, The Carlyle, VIP concierge New York, sovereign access NYC, Manhattan luxury travel, after-hours lounges NYC" />
+    <meta name="author" content="SOFI NYC Sovereign Protocol" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
     <link rel="canonical" href="https://sofi-gold.vercel.app/" />
     <meta name="theme-color" content="#040406" />
 
+    <!-- GEO & Local NYC Targeting Tags -->
+    <meta name="geo.region" content="US-NY" />
+    <meta name="geo.placename" content="New York, Manhattan" />
+    <meta name="geo.position" content="40.7128;-74.0060" />
+    <meta name="ICBM" content="40.7128, -74.0060" />
+    <meta name="DC.title" content="SOFI NYC — Private Members Clubs & Luxury Hotels in New York" />
+    <meta name="DC.creator" content="SOFI Sovereign Hospitality" />
+    <meta name="DC.coverage" content="New York City, Manhattan, TriBeCa, NoHo, Upper East Side" />
+    <meta name="DC.language" content="en-US" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="SOFI NYC" />
     <meta property="og:url" content="https://sofi-gold.vercel.app/" />
     <meta property="og:title" content="SOFI NYC — Private Members Clubs & Luxury Hotels in New York" />
     <meta property="og:description" content="Access New York's most exclusive luxury hotels, private members clubs, and after-hours enclaves. Confidential VIP concierge reservations." />
-    <meta property="og:image" content="https://sofi-gold.vercel.app/preview.jpg" />
+    <meta property="og:image" content="https://sofi-gold.vercel.app/og-image.jpg" />
+    <meta property="og:image:secure_url" content="https://sofi-gold.vercel.app/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="SOFI NYC Sovereign Luxury Protocol & Private Access" />
 
-    <!-- Twitter -->
+    <!-- Twitter / X -->
     <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:site" content="@sofi_nyc" />
+    <meta property="twitter:creator" content="@sofi_nyc" />
     <meta property="twitter:url" content="https://sofi-gold.vercel.app/" />
     <meta property="twitter:title" content="SOFI NYC — Private Members Clubs & Luxury Hotels in New York" />
-    <meta property="twitter:description" content="Access New York's most exclusive luxury hotels, private members clubs, and after-hours enclaves." />
-    <meta property="twitter:image" content="https://sofi-gold.vercel.app/preview.jpg" />
+    <meta property="twitter:description" content="Access New York's most exclusive luxury hotels, private members clubs, and after-hours enclaves. Confidential reservations." />
+    <meta property="twitter:image" content="https://sofi-gold.vercel.app/og-image.jpg" />
+    <meta property="twitter:image:alt" content="SOFI NYC Sovereign Luxury Protocol" />
 
-    <!-- Structured Data (JSON-LD) for Google SEO -->
+    <!-- Comprehensive JSON-LD Structured Data for Google Ranking -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "TravelAgency",
-      "name": "SOFI NYC",
-      "alternateName": "SOFI New York",
-      "url": "https://sofi-gold.vercel.app",
-      "logo": "https://sofi-gold.vercel.app/logo.svg",
-      "image": "https://sofi-gold.vercel.app/preview.jpg",
-      "description": "Private members clubs and luxury hotels concierge protocol in New York City.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "New York",
-        "addressRegion": "NY",
-        "addressCountry": "US"
-      },
-      "priceRange": "$$$$$"
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://sofi-gold.vercel.app/#website",
+          "url": "https://sofi-gold.vercel.app/",
+          "name": "SOFI NYC",
+          "description": "Private Members Clubs & Luxury Hotels Concierge in New York",
+          "publisher": {
+            "@type": "Organization",
+            "name": "SOFI NYC Sovereign Protocol",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://sofi-gold.vercel.app/logo.svg"
+            }
+          }
+        },
+        {
+          "@type": "TravelAgency",
+          "@id": "https://sofi-gold.vercel.app/#organization",
+          "name": "SOFI NYC",
+          "alternateName": "SOFI New York",
+          "url": "https://sofi-gold.vercel.app/",
+          "logo": "https://sofi-gold.vercel.app/logo.svg",
+          "image": "https://sofi-gold.vercel.app/og-image.jpg",
+          "description": "Exclusive concierge protocol for private members clubs and 5-star sovereign hotels in New York City.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Fifth Avenue",
+            "addressLocality": "New York",
+            "addressRegion": "NY",
+            "postalCode": "10019",
+            "addressCountry": "US"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 40.7128,
+            "longitude": -74.0060
+          },
+          "areaServed": {
+            "@type": "AdministrativeArea",
+            "name": "Manhattan, New York City"
+          },
+          "priceRange": "$$$$$",
+          "currenciesAccepted": "USD"
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://sofi-gold.vercel.app/#enclaves",
+          "name": "Curated NYC Sovereign Enclaves",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Aman New York",
+              "description": "Crown Building tranquility with 3-story subterranean spa and Jazz Club."
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Casa Cipriani",
+              "description": "Beaux-Arts maritime private club overlooking New York Harbor."
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "The Carlyle, A Rosewood Hotel",
+              "description": "Legendary Rosewood landmark and home of Bemelmans Bar on Upper East Side."
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Zero Bond",
+              "description": "Curated creative arts and private member sanctuary in NoHo."
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "Baccarat Hotel",
+              "description": "Prismatic crystal luminescence with Parisian Grand Salon refinement."
+            }
+          ]
+        }
+      ]
     }
     </script>
 

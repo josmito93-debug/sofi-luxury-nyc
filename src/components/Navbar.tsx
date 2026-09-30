@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Sparkles, Menu, X, Disc3 } from 'lucide-react';
+import { Volume2, VolumeX, Sparkles, Menu, X } from 'lucide-react';
 import { soundEngine } from '../services/audioEngine';
 import { Logo } from './Logo';
+import { SpotifyLogo } from './SpotifyLogo';
 
 interface NavbarProps {
   onOpenSpotify: () => void;

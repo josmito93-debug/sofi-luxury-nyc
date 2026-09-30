@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { X, Play, Pause, Volume2, Disc3, Radio, Sparkles, Sliders, Music } from 'lucide-react';
+import { X, Play, Pause, Volume2, Radio, Sparkles, Sliders, Music } from 'lucide-react';
 import { soundEngine } from '../services/audioEngine';
 import { AudioVisualizer } from './AudioVisualizer';
+import { SpotifyLogo } from './SpotifyLogo';
 
 interface SpotifyPlayerModalProps {
   isOpen: boolean;
@@ -55,16 +56,16 @@ export const SpotifyPlayerModal: React.FC<SpotifyPlayerModalProps> = ({
           {/* Header Bar */}
           <div className="flex items-center justify-between pb-6 border-b border-white/10">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-                <Disc3 className="w-5 h-5 animate-[spin_10s_linear_infinite]" />
+              <div className="w-10 h-10 rounded-full bg-[#1DB954]/15 border border-[#1DB954]/30 flex items-center justify-center">
+                <SpotifyLogo className="w-5 h-5" color="#1DB954" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
                   <h3 className="font-velora text-lg sm:text-xl tracking-[0.2em] text-white uppercase">
-                    SOFI Soundscape
+                    SOFI Spotify Lounge
                   </h3>
-                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono tracking-wider border border-emerald-500/20">
-                    HI-RES
+                  <span className="px-2 py-0.5 rounded-full bg-[#1DB954]/10 text-[#1DB954] text-[10px] font-mono tracking-wider border border-[#1DB954]/20">
+                    SPOTIFY HI-RES
                   </span>
                 </div>
                 <p className="text-white/40 text-[11px] tracking-[0.1em] font-light">

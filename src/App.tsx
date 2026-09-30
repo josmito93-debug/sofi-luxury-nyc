@@ -7,7 +7,7 @@ import { SpotifyPlayerModal } from './components/SpotifyPlayerModal';
 import { BookingModal } from './components/BookingModal';
 import { VipPassModal } from './components/VipPassModal';
 import { SoundscapeBar } from './components/SoundscapeBar';
-import { IntroLogoReveal } from './components/IntroLogoReveal';
+import { SocialLinks } from './components/SocialLinks';
 import { Logo } from './components/Logo';
 import { Sparkles, Shield, KeyRound, Radio } from 'lucide-react';
 
@@ -53,14 +53,14 @@ export function App() {
 
   return (
     <div className="relative min-h-screen text-white bg-obsidian-950 font-sans selection:bg-gold-400 selection:text-black">
-      {/* Cinematic Animated Logo Reveal on Page Open */}
-      <IntroLogoReveal onComplete={() => {}} />
-
       {/* Noise Texture Overlay */}
       <div className="noise-overlay" />
 
       {/* Absolute Video Background: luxy-bg.mp4 */}
       <BackgroundVideo />
+
+      {/* Absolute Left Floating Luxury Micro Social Links (No Container) */}
+      <SocialLinks />
 
       {/* Flush Top Header Navigation */}
       <Navbar
@@ -71,7 +71,7 @@ export function App() {
 
       {/* Main Content Area */}
       <main className="relative z-10 flex flex-col">
-        {/* Hero Section with The Animated Logo, SEO H1, and The Two Hero Buttons */}
+        {/* Hero Section with The Animated Large Center SVG Logo, SEO H1, and The Two Hero Buttons */}
         <Hero
           onOpenSpotify={() => setIsSpotifyOpen(true)}
           onOpenBooking={() => handleOpenBooking()}
