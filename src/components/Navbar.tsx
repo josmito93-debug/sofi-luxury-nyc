@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Volume2, VolumeX, Sparkles, Menu, X, Disc3 } from 'lucide-react';
 import { soundEngine } from '../services/audioEngine';
+import { Logo } from './Logo';
 
 interface NavbarProps {
   onOpenSpotify: () => void;
@@ -18,7 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSpotify, onOpenBooking, on
       setIsPlaying(soundEngine.isAmbientPlaying || soundEngine.isSynthPlaying);
     });
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 30);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
@@ -32,28 +33,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSpotify, onOpenBooking, on
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 pt-4 sm:pt-6 pointer-events-none flex justify-center">
-      {/* Floating Island Glass Pill */}
-      <nav
-        className={`pointer-events-auto transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-between gap-4 sm:gap-8 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full border border-white/10 ${
-          scrolled
-            ? 'bg-obsidian-950/80 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8)]'
-            : 'bg-obsidian-900/40 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)]'
-        } max-w-4xl w-full`}
-      >
-        {/* Brand Logo */}
+    <header
+      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-500 border-b ${
+        scrolled
+          ? 'bg-obsidian-950/90 backdrop-blur-2xl border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.8)]'
+          : 'bg-obsidian-950/40 backdrop-blur-md border-white/5'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 sm:py-4 flex items-center justify-between gap-4">
+        {/* Brand Logo with Official SVG */}
         <a href="#" className="flex items-center gap-2 group cursor-pointer select-none">
-          <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse-subtle shadow-[0_0_10px_#D4AF37]" />
-          <span className="font-velora text-xl sm:text-2xl tracking-[0.25em] text-white group-hover:text-gold-300 transition-colors uppercase">
-            SOFI
-          </span>
-          <span className="text-[9px] tracking-[0.3em] uppercase text-white/40 font-medium pl-1 border-l border-white/10 hidden sm:inline-block">
+          <Logo className="h-7 sm:h-8 w-auto" glow />
+          <span className="text-[10px] tracking-[0.3em] uppercase text-white/40 font-medium pl-2 border-l border-white/10 hidden sm:inline-block">
             NYC
           </span>
         </a>
 
-        {/* Center Links (Minimal, clean, discreet) */}
-        <div className="hidden md:flex items-center gap-6 text-[12px] uppercase tracking-[0.2em] text-white/60 font-medium">
+        {/* Center Links (Flush & Modern) */}
+        <div className="hidden md:flex items-center gap-8 text-[11px] uppercase tracking-[0.22em] text-white/60 font-medium">
           <a href="#showcase" className="hover:text-white transition-colors duration-300">
             Enclaves
           </a>
@@ -136,12 +133,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSpotify, onOpenBooking, on
             {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
         </div>
-      </nav>
+      </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-[76px] bg-obsidian-950/95 backdrop-blur-2xl z-40 p-6 flex flex-col justify-between border-t border-white/10 pointer-events-auto">
+        <div className="md:hidden fixed inset-0 top-[60px] bg-obsidian-950/98 backdrop-blur-2xl z-40 p-6 flex flex-col justify-between border-t border-white/10">
           <div className="space-y-6 pt-6 text-center">
+            <div className="flex justify-center pb-2">
+              <Logo className="h-10 w-auto" glow />
+            </div>
             <a
               href="#showcase"
               onClick={() => setMobileMenuOpen(false)}

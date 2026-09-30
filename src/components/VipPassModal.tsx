@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { X, Sparkles, Download, Check, Shield, Copy, Share2 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 import confetti from 'canvas-confetti';
+import { Logo } from './Logo';
 
 interface VipPassData {
   passholderName: string;
@@ -121,11 +122,8 @@ export const VipPassModal: React.FC<VipPassModalProps> = ({
             {/* Card Header */}
             <div className="flex items-center justify-between border-b border-white/10 pb-5 relative z-10">
               <div className="flex items-center gap-2.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-gold-400 animate-pulse shadow-[0_0_10px_#D4AF37]" />
-                <span className="font-velora text-xl sm:text-2xl tracking-[0.22em] text-white uppercase">
-                  SOFI
-                </span>
-                <span className="text-[9px] uppercase tracking-[0.3em] text-white/40 pl-1 border-l border-white/10">
+                <Logo className="h-6 w-auto" glow />
+                <span className="text-[9px] uppercase tracking-[0.3em] text-white/40 pl-2 border-l border-white/10">
                   NYC PASS
                 </span>
               </div>

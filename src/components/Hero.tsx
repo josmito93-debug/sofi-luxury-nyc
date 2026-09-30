@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { Disc3, KeyRound, Sparkles, ChevronDown, MapPin, Radio } from 'lucide-react';
+import { Disc3, KeyRound, ChevronDown, MapPin, Radio } from 'lucide-react';
 import { soundEngine } from '../services/audioEngine';
+import { Logo } from './Logo';
 
 interface HeroProps {
   onOpenSpotify: () => void;
@@ -15,6 +16,7 @@ export const Hero: React.FC<HeroProps> = ({
   onExploreDirectory
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const logoBoxRef = useRef<HTMLDivElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subtextRef = useRef<HTMLParagraphElement>(null);
@@ -47,36 +49,42 @@ export const Hero: React.FC<HeroProps> = ({
     // GSAP Master Reveal
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
-        defaults: { ease: 'power3.out', duration: 1.2 }
+        defaults: { ease: 'power3.out', duration: 1.1 }
       });
 
       tl.fromTo(
-        badgeRef.current,
-        { opacity: 0, y: 20, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, delay: 0.3 }
+        logoBoxRef.current,
+        { opacity: 0, scale: 0.85, filter: 'blur(10px)' },
+        { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 1.3, delay: 0.2 }
       )
       .fromTo(
-        headingRef.current,
-        { opacity: 0, y: 35, filter: 'blur(10px)' },
-        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.4 },
+        badgeRef.current,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.8 },
         '-=0.8'
       )
       .fromTo(
+        headingRef.current,
+        { opacity: 0, y: 30, filter: 'blur(8px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.2 },
+        '-=0.7'
+      )
+      .fromTo(
         subtextRef.current,
-        { opacity: 0, y: 25 },
-        { opacity: 1, y: 0, duration: 1.1 },
-        '-=0.9'
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1.0 },
+        '-=0.8'
       )
       .fromTo(
         buttonsRef.current?.children || [],
         { opacity: 0, y: 20, scale: 0.96 },
-        { opacity: 1, y: 0, scale: 1, stagger: 0.15, duration: 1.0 },
-        '-=0.7'
+        { opacity: 1, y: 0, scale: 1, stagger: 0.15, duration: 0.9 },
+        '-=0.6'
       )
       .fromTo(
         metaRef.current,
         { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.9 },
+        { opacity: 1, y: 0, duration: 0.8 },
         '-=0.5'
       );
     }, containerRef);
@@ -91,49 +99,61 @@ export const Hero: React.FC<HeroProps> = ({
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[100dvh] flex flex-col justify-between items-center px-4 sm:px-6 pt-32 sm:pt-40 pb-12 z-10 text-center"
+      className="relative min-h-[100dvh] flex flex-col justify-between items-center px-4 sm:px-6 pt-32 sm:pt-36 pb-10 z-10 text-center"
     >
       {/* Central Hero Block */}
       <div className="max-w-4xl mx-auto flex flex-col items-center my-auto">
+        {/* Master Animated Official SVG Logo */}
+        <div ref={logoBoxRef} className="mb-4 sm:mb-6 flex justify-center">
+          <Logo
+            className="h-16 sm:h-20 md:h-24 w-auto max-w-[260px] sm:max-w-[340px]"
+            glow
+            alt="SOFI NYC Official Logo"
+          />
+        </div>
+
         {/* Eyebrow Pill */}
         <div
           ref={badgeRef}
-          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.04] backdrop-blur-md border border-white/10 shadow-[0_0_20px_rgba(212,175,55,0.15)] mb-8"
+          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.04] backdrop-blur-md border border-white/10 shadow-[0_0_20px_rgba(212,175,55,0.15)] mb-6"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-ping" />
           <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.28em] font-medium text-gold-200">
-            Private NYC Enclaves & Hospitality
+            Manhattan Sovereign Hospitality Protocol
           </span>
         </div>
 
-        {/* Master Clean Typography: Minimal, grand, impactful */}
+        {/* High-Impact SEO H1 Optimized for Google Ranking */}
         <h1
           ref={headingRef}
-          className="font-velora text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-[0.14em] text-white uppercase leading-[0.95] select-none"
+          className="font-velora text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[0.1em] text-white uppercase leading-[1.05] select-none max-w-4xl"
         >
-          SOFI
-          <span className="block font-luxury text-3xl sm:text-5xl md:text-6xl tracking-[0.2em] font-light text-gold-300/90 mt-2 sm:mt-3 lowercase italic">
-            new york
+          <span className="block font-sans text-[11px] sm:text-xs md:text-sm tracking-[0.32em] text-gold-300 font-semibold mb-2 uppercase">
+            New York Private Access & Concierge
+          </span>
+          <span>Exclusive Luxury Hotels</span>
+          <span className="block font-luxury text-2xl sm:text-4xl md:text-5xl tracking-[0.16em] font-light text-gold-300/90 mt-1.5 lowercase italic">
+            & private members clubs
           </span>
         </h1>
 
-        {/* Clean, Modern, Restrained Tagline (Not much text) */}
+        {/* Clean, Modern, Restrained Tagline */}
         <p
           ref={subtextRef}
-          className="mt-6 sm:mt-8 max-w-xl text-white/70 text-sm sm:text-base md:text-lg font-light tracking-[0.04em] leading-relaxed"
+          className="mt-6 max-w-xl text-white/70 text-xs sm:text-sm md:text-base font-light tracking-[0.04em] leading-relaxed"
         >
-          A discreet gateway to Manhattan's most sovereign hotels, private member salons, and after-hours enclaves.
+          Discreet access to Manhattan's most sovereign sanctuaries, Michelin private salons, and after-hours enclaves. Confidential bookings and cryptographic VIP passes.
         </p>
 
-        {/* THE TWO HERO BUTTONS (Requested by user) */}
+        {/* THE TWO HERO BUTTONS */}
         <div
           ref={buttonsRef}
-          className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full max-w-md sm:max-w-none"
+          className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full max-w-md sm:max-w-none"
         >
           {/* Hero Button 1: Spotify Luxury Player */}
           <button
             onClick={onOpenSpotify}
-            className="group relative w-full sm:w-auto inline-flex items-center justify-between sm:justify-start gap-4 px-6 sm:px-8 py-4 rounded-full bg-obsidian-900/60 hover:bg-obsidian-900/90 backdrop-blur-2xl border border-white/15 hover:border-emerald-400/50 shadow-[0_10px_35px_rgba(0,0,0,0.6)] hover:shadow-[0_0_35px_rgba(16,185,129,0.25)] transition-all duration-500 active:scale-[0.98]"
+            className="group relative w-full sm:w-auto inline-flex items-center justify-between sm:justify-start gap-4 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-obsidian-900/60 hover:bg-obsidian-900/90 backdrop-blur-2xl border border-white/15 hover:border-emerald-400/50 shadow-[0_10px_35px_rgba(0,0,0,0.6)] hover:shadow-[0_0_35px_rgba(16,185,129,0.25)] transition-all duration-500 active:scale-[0.98]"
           >
             <div className="flex items-center gap-3 text-left">
               <div className="w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform duration-500">
@@ -150,7 +170,6 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
             </div>
 
-            {/* Nested Trailing Icon */}
             <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:translate-x-1 group-hover:-translate-y-0.5 group-hover:bg-emerald-400/20 group-hover:border-emerald-400/40 transition-all duration-300">
               <Radio className="w-3.5 h-3.5 text-white/70 group-hover:text-emerald-300" />
             </div>
@@ -159,7 +178,7 @@ export const Hero: React.FC<HeroProps> = ({
           {/* Hero Button 2: VIP Booking Modal with NYC venues */}
           <button
             onClick={onOpenBooking}
-            className="group relative w-full sm:w-auto inline-flex items-center justify-between sm:justify-start gap-4 px-6 sm:px-8 py-4 rounded-full bg-gradient-to-r from-gold-400 via-gold-400 to-gold-500 hover:from-gold-300 hover:to-gold-400 text-obsidian-950 font-bold shadow-[0_0_35px_rgba(212,175,55,0.35)] hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all duration-500 active:scale-[0.98]"
+            className="group relative w-full sm:w-auto inline-flex items-center justify-between sm:justify-start gap-4 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-gold-400 via-gold-400 to-gold-500 hover:from-gold-300 hover:to-gold-400 text-obsidian-950 font-bold shadow-[0_0_35px_rgba(212,175,55,0.35)] hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all duration-500 active:scale-[0.98]"
           >
             <div className="flex items-center gap-3 text-left">
               <div className="w-9 h-9 rounded-full bg-obsidian-950/15 flex items-center justify-center text-obsidian-950 group-hover:scale-110 transition-transform duration-500">
@@ -175,7 +194,6 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
             </div>
 
-            {/* Nested Trailing Icon */}
             <div className="w-8 h-8 rounded-full bg-obsidian-950/20 flex items-center justify-center group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform duration-300">
               <span className="text-xs text-obsidian-950 font-black">↗</span>
             </div>

@@ -7,6 +7,8 @@ import { SpotifyPlayerModal } from './components/SpotifyPlayerModal';
 import { BookingModal } from './components/BookingModal';
 import { VipPassModal } from './components/VipPassModal';
 import { SoundscapeBar } from './components/SoundscapeBar';
+import { IntroLogoReveal } from './components/IntroLogoReveal';
+import { Logo } from './components/Logo';
 import { Sparkles, Shield, KeyRound, Radio } from 'lucide-react';
 
 export function App() {
@@ -51,13 +53,16 @@ export function App() {
 
   return (
     <div className="relative min-h-screen text-white bg-obsidian-950 font-sans selection:bg-gold-400 selection:text-black">
+      {/* Cinematic Animated Logo Reveal on Page Open */}
+      <IntroLogoReveal onComplete={() => {}} />
+
       {/* Noise Texture Overlay */}
       <div className="noise-overlay" />
 
       {/* Absolute Video Background: luxy-bg.mp4 */}
       <BackgroundVideo />
 
-      {/* Floating Island Header Navigation */}
+      {/* Flush Top Header Navigation */}
       <Navbar
         onOpenSpotify={() => setIsSpotifyOpen(true)}
         onOpenBooking={() => handleOpenBooking()}
@@ -66,7 +71,7 @@ export function App() {
 
       {/* Main Content Area */}
       <main className="relative z-10 flex flex-col">
-        {/* Hero Section with The Two Hero Buttons */}
+        {/* Hero Section with The Animated Logo, SEO H1, and The Two Hero Buttons */}
         <Hero
           onOpenSpotify={() => setIsSpotifyOpen(true)}
           onOpenBooking={() => handleOpenBooking()}
@@ -120,9 +125,9 @@ export function App() {
           </div>
         </section>
 
-        {/* Comprehensive NYC Luxury Directory */}
+        {/* Curated NYC Enclaves Directory */}
         <VenueDirectory
-          onReserveVenue={(id) => handleOpenBooking(id)}
+          onReserveVenue={(name) => handleOpenBooking(name)}
           onOpenBooking={() => handleOpenBooking()}
         />
 
@@ -155,8 +160,8 @@ export function App() {
       {/* Minimal Footer */}
       <footer className="relative z-10 border-t border-white/10 py-10 px-4 sm:px-8 text-center sm:text-left">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-white/40 text-[11px] uppercase tracking-[0.18em]">
-          <div className="flex items-center gap-2">
-            <span className="font-velora text-white text-sm tracking-[0.2em]">SOFI NYC</span>
+          <div className="flex items-center gap-3">
+            <Logo className="h-6 w-auto" glow />
             <span>•</span>
             <span>40.7128° N, 74.0060° W</span>
           </div>
