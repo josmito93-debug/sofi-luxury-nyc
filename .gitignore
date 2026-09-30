@@ -1,0 +1,15 @@
+# Node & Build
+node_modules/
+.vercel/
+dist/
+.DS_Store
+
+# Raw heavy source assets (web assets are served from public/)
+hf_20260930_080411_e7d48808-d364-4753-ae58-bd90f61e5ed3.mp4
+*2026-09-08-01-39-05-utc/
+*2026-04-07-06-19-40-utc/
+/Westford Modern/
+/luxy-bg.mp4
+/ambient-track.mp3
+/preview.jpg
+/fonts/

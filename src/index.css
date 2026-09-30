@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@theme {
+  --font-velora: 'Velora', sans-serif;
+  --font-luxury: 'LuxuryStylish', serif;
+  --font-westford: 'WestfordModern', serif;
+
+  --color-gold-50: #FBF8F1;
+  --color-gold-100: #F5EED9;
+  --color-gold-200: #EBDCB4;
+  --color-gold-300: #DFC68B;
+  --color-gold-400: #D4AF37;
+  --color-gold-500: #C5A028;
+  --color-gold-600: #A4821B;
+  --color-gold-700: #7E6316;
+  --color-gold-800: #544212;
+  --color-gold-900: #2D230A;
+
+  --color-obsidian-700: #1b1e2a;
+  --color-obsidian-800: #12141d;
+  --color-obsidian-850: #0d0f15;
+  --color-obsidian-900: #08090d;
+  --color-obsidian-950: #040406;
+}
+
+@font-face {
+  font-family: 'Velora';
+  src: url('/fonts/Velora.otf') format('opentype'),
+       url('/fonts/Velora.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LuxuryStylish';
+  src: url('/fonts/LuxuryStylish.otf') format('opentype'),
+       url('/fonts/LuxuryStylish.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'WestfordModern';
+  src: url('/fonts/WestfordModern.woff') format('woff'),
+       url('/fonts/WestfordModern.otf') format('opentype'),
+       url('/fonts/WestfordModern.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  background-color: #040406;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* Glass & Doppelrand Nested Hardware Bezel */
+.doppel-shell {
+  position: relative;
+  border-radius: 1.75rem;
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(212, 175, 55, 0.25) 30%, rgba(255, 255, 255, 0.04) 70%, rgba(255, 255, 255, 0.08) 100%);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.doppel-shell:hover {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.45) 0%, rgba(255, 255, 255, 0.2) 40%, rgba(212, 175, 55, 0.15) 100%);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.7), 0 0 30px -5px rgba(212, 175, 55, 0.15);
+}
+
+.doppel-core {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: calc(1.75rem - 1.5px);
+  background: rgba(10, 11, 15, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+/* Gold foil holographic badge effect */
+.gold-foil {
+  background: linear-gradient(135deg, #ECC874 0%, #D4AF37 35%, #FFF0C1 50%, #B8922C 70%, #F5DE98 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-foil-bg {
+  background: linear-gradient(135deg, #ECC874 0%, #D4AF37 35%, #FFF0C1 50%, #B8922C 70%, #F5DE98 100%);
+}
+
+/* Subtle Film Grain */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom discreet scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #040406;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.5);
+}
