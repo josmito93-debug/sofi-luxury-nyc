@@ -5,7 +5,7 @@ export const SocialLinks: React.FC = () => {
   const socials = [
     {
       name: 'Instagram',
-      href: 'https://instagram.com/sofi.nyc',
+      href: 'https://www.instagram.com/sofiasarlat/',
       icon: (
         <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
           <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
@@ -16,33 +16,44 @@ export const SocialLinks: React.FC = () => {
     },
     {
       name: 'Spotify',
-      href: 'https://open.spotify.com/playlist/37i9dQZF1DX4WYpdgoIcn6',
+      href: 'https://open.spotify.com/user/sofia.gabrielle?si=06b7a07e8865442e',
       icon: <SpotifyLogo className="w-3.5 h-3.5 sm:w-4 sm:h-4" color="currentColor" />
     },
     {
-      name: 'X',
-      href: 'https://x.com/sofi_nyc',
+      name: 'YouTube',
+      href: 'https://www.youtube.com/@sofiasarlat',
       icon: (
         <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
         </svg>
       )
     },
     {
-      name: 'Concierge WhatsApp',
-      href: 'https://wa.me/12125550199?text=SOFI%20NYC%20VIP%20Access%20Request',
+      name: 'Website',
+      href: 'https://www.sofiasarlat.com',
       icon: (
         <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          <circle cx="12" cy="12" r="10" />
+          <line x1="2" y1="12" x2="22" y2="12" />
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
         </svg>
       )
     },
     {
-      name: 'Telegram Dispatch',
-      href: 'https://t.me/sofi_nyc',
+      name: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/sofia-sarlat-40a759101/',
       icon: (
         <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+        </svg>
+      )
+    },
+    {
+      name: 'Facebook',
+      href: 'https://www.facebook.com/SofiaSarlat/?locale=es_LA',
+      icon: (
+        <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
         </svg>
       )
     }
@@ -51,10 +62,10 @@ export const SocialLinks: React.FC = () => {
   return (
     <div
       aria-label="Social connections"
-      className="fixed left-3 sm:left-6 top-20 sm:top-1/2 sm:-translate-y-1/2 z-40 flex flex-col items-center gap-3.5 sm:gap-5 select-none pointer-events-auto"
+      className="fixed left-3 sm:left-6 top-20 sm:top-1/2 sm:-translate-y-1/2 z-40 flex flex-col items-center gap-3.5 sm:gap-4 select-none pointer-events-auto"
     >
       {/* Top Hairline Axis */}
-      <div className="w-[1px] h-6 sm:h-12 bg-gradient-to-b from-transparent via-gold-400/30 to-gold-400/50" />
+      <div className="w-[1px] h-6 sm:h-10 bg-gradient-to-b from-transparent via-gold-400/30 to-gold-400/60" />
 
       {/* Social Links (No Container, Floating Luxury Micro Icons) */}
       {socials.map((s) => (
@@ -72,7 +83,7 @@ export const SocialLinks: React.FC = () => {
       ))}
 
       {/* Bottom Hairline Axis */}
-      <div className="w-[1px] h-6 sm:h-12 bg-gradient-to-t from-transparent via-gold-400/30 to-gold-400/50" />
+      <div className="w-[1px] h-6 sm:h-10 bg-gradient-to-t from-transparent via-gold-400/30 to-gold-400/60" />
     </div>
   );
 };
