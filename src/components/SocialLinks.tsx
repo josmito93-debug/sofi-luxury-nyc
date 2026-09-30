@@ -51,10 +51,10 @@ export const SocialLinks: React.FC = () => {
   return (
     <div
       aria-label="Social connections"
-      className="fixed left-3 sm:left-6 top-1/2 -translate-y-1/2 z-40 hidden sm:flex flex-col items-center gap-4 sm:gap-5 select-none pointer-events-auto"
+      className="fixed left-3 sm:left-6 top-20 sm:top-1/2 sm:-translate-y-1/2 z-40 flex flex-col items-center gap-3.5 sm:gap-5 select-none pointer-events-auto"
     >
       {/* Top Hairline Axis */}
-      <div className="w-[1px] h-8 sm:h-12 bg-gradient-to-b from-transparent via-gold-400/30 to-gold-400/50" />
+      <div className="w-[1px] h-6 sm:h-12 bg-gradient-to-b from-transparent via-gold-400/30 to-gold-400/50" />
 
       {/* Social Links (No Container, Floating Luxury Micro Icons) */}
       {socials.map((s) => (
@@ -65,14 +65,14 @@ export const SocialLinks: React.FC = () => {
           rel="noopener noreferrer"
           aria-label={s.name}
           title={s.name}
-          className="text-white/35 hover:text-gold-300 transition-all duration-300 hover:scale-125 focus:outline-none"
+          className="text-white/40 hover:text-gold-300 transition-all duration-300 hover:scale-125 focus:outline-none"
         >
           {s.icon}
         </a>
       ))}
 
       {/* Bottom Hairline Axis */}
-      <div className="w-[1px] h-8 sm:h-12 bg-gradient-to-t from-transparent via-gold-400/30 to-gold-400/50" />
+      <div className="w-[1px] h-6 sm:h-12 bg-gradient-to-t from-transparent via-gold-400/30 to-gold-400/50" />
     </div>
   );
 };
